@@ -8,6 +8,10 @@ class SplashView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Future.delayed(
+      const Duration(seconds: 2),
+      () => Navigator.of(context).pushReplacementNamed('/home'),
+    );
     return Scaffold(
       backgroundColor: AppColors.primary,
       body: Center(

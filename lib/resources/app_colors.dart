@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class AppColors {
   static Color primary = HexColor.fromHex("#EC0344");
   static Color white = HexColor.fromHex("#FFFFFF");
+  static Color darkBackground = HexColor.fromHex("#212121");
 }
 
 extension HexColor on Color {
