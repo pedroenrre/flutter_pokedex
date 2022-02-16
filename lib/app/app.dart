@@ -9,6 +9,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Pokédex',
+      debugShowCheckedModeBanner: false,
       onGenerateRoute: RoutesManager.getRoute,
       initialRoute: Routes.splashRoute,
       theme: getApplicationTheme(),

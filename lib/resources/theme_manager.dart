@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-import 'color_manager.dart';
+import 'app_colors.dart';
 
 ThemeData getApplicationTheme() {
   return ThemeData(
     // main colors of the app
-    primaryColor: ColorManager.primary,
+    primaryColor: AppColors.primary,
   );
 }
