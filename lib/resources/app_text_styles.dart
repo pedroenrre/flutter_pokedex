@@ -17,3 +17,19 @@ TextStyle getWhiteStyle({fontSize = 14.0, fontWeight = FontWeight.w400}) {
     color: AppColors.white,
   );
 }
+
+TextStyle getPinkStyle({fontSize = 14.0, fontWeight = FontWeight.w400}) {
+  return GoogleFonts.poppins(
+    fontSize: fontSize,
+    fontWeight: fontWeight,
+    color: AppColors.primary,
+  );
+}
+
+TextStyle getGreyStyle({fontSize = 14.0, fontWeight = FontWeight.w400}) {
+  return GoogleFonts.poppins(
+    fontSize: fontSize,
+    fontWeight: fontWeight,
+    color: AppColors.content,
+  );
+}

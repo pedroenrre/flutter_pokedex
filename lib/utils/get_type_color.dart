@@ -12,7 +12,7 @@ Color getTypeColor(String type) {
     case 'poison':
       return AppColors.poison;
     case 'ground':
-      return AppColors.normal;
+      return AppColors.ground;
     case 'rock':
       return AppColors.rock;
     case 'bug':
@@ -39,6 +39,10 @@ Color getTypeColor(String type) {
       return AppColors.normal;
     case 'shadow':
       return AppColors.normal;
+    case 'psychic':
+      return AppColors.psychic;
+    case 'fairy':
+      return AppColors.fairy;
     default:
       return AppColors.normal;
   }

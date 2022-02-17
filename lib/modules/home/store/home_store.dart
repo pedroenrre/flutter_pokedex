@@ -15,6 +15,12 @@ abstract class _HomeStoreBase with Store {
   void setLoading(bool value) => loading = value;
 
   @observable
+  bool loadingMoreData = false;
+
+  @action
+  void setLoadingMoreData(bool value) => loadingMoreData = value;
+
+  @observable
   DataModel dataController = DataModel();
 
   @action
@@ -22,6 +28,9 @@ abstract class _HomeStoreBase with Store {
       dataController = DataModel.fromJson(value);
 
   ObservableList<PokemonListModel> pokemons =
+      ObservableList<PokemonListModel>();
+
+  ObservableList<PokemonListModel> pokemonsFiltered =
       ObservableList<PokemonListModel>();
 
   @action
@@ -39,22 +48,39 @@ abstract class _HomeStoreBase with Store {
         await pokeService.getPokemon(pokemons[i].url!),
       );
     }
+    pokemonsFiltered.addAll(pokemons);
   }
 
   @action
   Future<void> addMorePokemons(Map<String, dynamic> value) async {
     setDataController(value);
-    final initialLength = pokemons.length - 1;
+    List<PokemonListModel> tmp = [];
     value['results'].forEach(
       (v) {
-        pokemons.add(PokemonListModel.fromJson(v));
+        tmp.add(PokemonListModel.fromJson(v));
       },
     );
     final PokemonService pokeService = GetIt.I.get();
-    for (int i = initialLength; i < pokemons.length; i++) {
-      pokemons[i].pokemon = PokemonModel.fromJson(
-        await pokeService.getPokemon(pokemons[i].url!),
+    for (int i = 0; i < tmp.length; i++) {
+      tmp[i].pokemon = PokemonModel.fromJson(
+        await pokeService.getPokemon(tmp[i].url!),
       );
     }
+    pokemonsFiltered.addAll(tmp);
+    pokemons.addAll(tmp);
+  }
+
+  @action
+  void filterData(String text) {
+    List<PokemonListModel> tmp =
+        [...pokemons].where((element) => element.name!.contains(text)).toList();
+    pokemonsFiltered.clear();
+    pokemonsFiltered.addAll(tmp);
+  }
+
+  @action
+  void resetFilterData() {
+    pokemonsFiltered.clear();
+    pokemonsFiltered.addAll(pokemons);
   }
 }

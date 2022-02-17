@@ -24,6 +24,21 @@ mixin _$HomeStore on _HomeStoreBase, Store {
     });
   }
 
+  final _$loadingMoreDataAtom = Atom(name: '_HomeStoreBase.loadingMoreData');
+
+  @override
+  bool get loadingMoreData {
+    _$loadingMoreDataAtom.reportRead();
+    return super.loadingMoreData;
+  }
+
+  @override
+  set loadingMoreData(bool value) {
+    _$loadingMoreDataAtom.reportWrite(value, super.loadingMoreData, () {
+      super.loadingMoreData = value;
+    });
+  }
+
   final _$dataControllerAtom = Atom(name: '_HomeStoreBase.dataController');
 
   @override
@@ -69,6 +84,17 @@ mixin _$HomeStore on _HomeStoreBase, Store {
   }
 
   @override
+  void setLoadingMoreData(bool value) {
+    final _$actionInfo = _$_HomeStoreBaseActionController.startAction(
+        name: '_HomeStoreBase.setLoadingMoreData');
+    try {
+      return super.setLoadingMoreData(value);
+    } finally {
+      _$_HomeStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setDataController(Map<String, dynamic> value) {
     final _$actionInfo = _$_HomeStoreBaseActionController.startAction(
         name: '_HomeStoreBase.setDataController');
@@ -80,9 +106,32 @@ mixin _$HomeStore on _HomeStoreBase, Store {
   }
 
   @override
+  void filterData(String text) {
+    final _$actionInfo = _$_HomeStoreBaseActionController.startAction(
+        name: '_HomeStoreBase.filterData');
+    try {
+      return super.filterData(text);
+    } finally {
+      _$_HomeStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void resetFilterData() {
+    final _$actionInfo = _$_HomeStoreBaseActionController.startAction(
+        name: '_HomeStoreBase.resetFilterData');
+    try {
+      return super.resetFilterData();
+    } finally {
+      _$_HomeStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 loading: ${loading},
+loadingMoreData: ${loadingMoreData},
 dataController: ${dataController}
     ''';
   }

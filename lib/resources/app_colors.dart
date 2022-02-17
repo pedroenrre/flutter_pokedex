@@ -4,6 +4,7 @@ class AppColors {
   static Color primary = HexColor.fromHex("#EC0344");
   static Color white = HexColor.fromHex("#FFFFFF");
   static Color darkBackground = HexColor.fromHex("#212121");
+  static Color content = HexColor.fromHex("#666666");
 
   //Pokemon Type Colors
   static Color normal = HexColor.fromHex("#AAA67F");
@@ -21,6 +22,8 @@ class AppColors {
   static Color ice = HexColor.fromHex("#98D8D8");
   static Color dragon = HexColor.fromHex("#7038F8");
   static Color poison = HexColor.fromHex("#A040A0");
+  static Color ground = HexColor.fromHex("#E0C068");
+  static Color fairy = HexColor.fromHex("#EE99AC");
 }
 
 extension HexColor on Color {
