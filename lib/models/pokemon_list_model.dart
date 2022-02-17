@@ -1,3 +1,5 @@
+import 'package:pokedex/models/pokemon_model.dart';
+
 class DataModel {
   int? count;
   String? next;
@@ -33,8 +35,9 @@ class PokemonListModel {
   String? name;
   String? url;
   String? pokemonImage;
+  PokemonModel? pokemon;
 
-  PokemonListModel({this.name, this.url, this.pokemonImage});
+  PokemonListModel({this.name, this.url, this.pokemonImage, this.pokemon});
 
   PokemonListModel.fromJson(Map<String, dynamic> json) {
     name = json['name'];

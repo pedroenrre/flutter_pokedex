@@ -9,3 +9,11 @@ TextStyle getSplashStyle({fontSize = 24.0, fontWeight = FontWeight.w700}) {
     color: AppColors.white,
   );
 }
+
+TextStyle getWhiteStyle({fontSize = 14.0, fontWeight = FontWeight.w400}) {
+  return GoogleFonts.poppins(
+    fontSize: fontSize,
+    fontWeight: fontWeight,
+    color: AppColors.white,
+  );
+}

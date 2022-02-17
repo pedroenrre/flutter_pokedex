@@ -4,6 +4,8 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get_it/get_it.dart';
 import 'package:pokedex/modules/home/home_controller.dart';
 import 'package:pokedex/resources/app_images.dart';
+import 'package:pokedex/resources/app_text_styles.dart';
+import 'package:pokedex/utils/get_type_color.dart';
 import 'package:shimmer/shimmer.dart';
 
 class HomeView extends StatefulWidget {
@@ -55,6 +57,15 @@ class _HomeViewState extends State<HomeView> {
                                       const EdgeInsets.only(right: 8.0, top: 4),
                                   child: Text(
                                     '#${(index + 1)}',
+                                    style: TextStyle(
+                                        color: getTypeColor(controller
+                                                .store
+                                                .pokemons[index]
+                                                .pokemon
+                                                ?.types?[0]
+                                                .type
+                                                ?.name ??
+                                            '')),
                                   ),
                                 ),
                               ),
@@ -63,8 +74,14 @@ class _HomeViewState extends State<HomeView> {
                                   padding:
                                       const EdgeInsets.symmetric(horizontal: 4),
                                   child: SvgPicture.network(
-                                    controller.store.pokemons[index]
-                                            .pokemonImage ??
+                                    controller
+                                            .store
+                                            .pokemons[index]
+                                            .pokemon
+                                            ?.sprites
+                                            ?.other
+                                            ?.dreamWorld
+                                            ?.frontDefault ??
                                         '',
                                     placeholderBuilder: (context) {
                                       return Shimmer.fromColors(
@@ -87,7 +104,14 @@ class _HomeViewState extends State<HomeView> {
                                     const EdgeInsets.symmetric(vertical: 4),
                                 margin: const EdgeInsets.only(top: 2),
                                 decoration: BoxDecoration(
-                                  color: Colors.blue.shade100,
+                                  color: getTypeColor(controller
+                                          .store
+                                          .pokemons[index]
+                                          .pokemon
+                                          ?.types?[0]
+                                          .type
+                                          ?.name ??
+                                      ''),
                                   border: Border.all(
                                     width: 0,
                                   ),
@@ -98,6 +122,7 @@ class _HomeViewState extends State<HomeView> {
                                 child: Text(
                                   controller.store.pokemons[index].name ??
                                       'Não informado',
+                                  style: getWhiteStyle(),
                                   textAlign: TextAlign.center,
                                 ),
                               )

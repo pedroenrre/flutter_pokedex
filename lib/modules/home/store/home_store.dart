@@ -1,5 +1,8 @@
+import 'package:get_it/get_it.dart';
 import 'package:mobx/mobx.dart';
 import 'package:pokedex/models/pokemon_list_model.dart';
+import 'package:pokedex/models/pokemon_model.dart';
+import 'package:pokedex/services/pokemon_service.dart';
 part 'home_store.g.dart';
 
 class HomeStore = _HomeStoreBase with _$HomeStore;
@@ -22,7 +25,7 @@ abstract class _HomeStoreBase with Store {
       ObservableList<PokemonListModel>();
 
   @action
-  void setPokemons(Map<String, dynamic> value) {
+  Future<void> setPokemons(Map<String, dynamic> value) async {
     pokemons.clear();
     setDataController(value);
     value['results'].forEach(
@@ -30,15 +33,28 @@ abstract class _HomeStoreBase with Store {
         pokemons.add(PokemonListModel.fromJson(v));
       },
     );
+    final PokemonService pokeService = GetIt.I.get();
+    for (int i = 0; i < pokemons.length; i++) {
+      pokemons[i].pokemon = PokemonModel.fromJson(
+        await pokeService.getPokemon(pokemons[i].url!),
+      );
+    }
   }
 
   @action
-  void addMorePokemons(Map<String, dynamic> value) {
+  Future<void> addMorePokemons(Map<String, dynamic> value) async {
     setDataController(value);
+    final initialLength = pokemons.length - 1;
     value['results'].forEach(
       (v) {
         pokemons.add(PokemonListModel.fromJson(v));
       },
     );
+    final PokemonService pokeService = GetIt.I.get();
+    for (int i = initialLength; i < pokemons.length; i++) {
+      pokemons[i].pokemon = PokemonModel.fromJson(
+        await pokeService.getPokemon(pokemons[i].url!),
+      );
+    }
   }
 }

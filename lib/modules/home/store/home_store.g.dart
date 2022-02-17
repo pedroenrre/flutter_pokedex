@@ -39,6 +39,21 @@ mixin _$HomeStore on _HomeStoreBase, Store {
     });
   }
 
+  final _$setPokemonsAsyncAction = AsyncAction('_HomeStoreBase.setPokemons');
+
+  @override
+  Future<void> setPokemons(Map<String, dynamic> value) {
+    return _$setPokemonsAsyncAction.run(() => super.setPokemons(value));
+  }
+
+  final _$addMorePokemonsAsyncAction =
+      AsyncAction('_HomeStoreBase.addMorePokemons');
+
+  @override
+  Future<void> addMorePokemons(Map<String, dynamic> value) {
+    return _$addMorePokemonsAsyncAction.run(() => super.addMorePokemons(value));
+  }
+
   final _$_HomeStoreBaseActionController =
       ActionController(name: '_HomeStoreBase');
 
@@ -59,28 +74,6 @@ mixin _$HomeStore on _HomeStoreBase, Store {
         name: '_HomeStoreBase.setDataController');
     try {
       return super.setDataController(value);
-    } finally {
-      _$_HomeStoreBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  void setPokemons(Map<String, dynamic> value) {
-    final _$actionInfo = _$_HomeStoreBaseActionController.startAction(
-        name: '_HomeStoreBase.setPokemons');
-    try {
-      return super.setPokemons(value);
-    } finally {
-      _$_HomeStoreBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  void addMorePokemons(Map<String, dynamic> value) {
-    final _$actionInfo = _$_HomeStoreBaseActionController.startAction(
-        name: '_HomeStoreBase.addMorePokemons');
-    try {
-      return super.addMorePokemons(value);
     } finally {
       _$_HomeStoreBaseActionController.endAction(_$actionInfo);
     }

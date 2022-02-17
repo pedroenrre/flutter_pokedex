@@ -1,5 +1,8 @@
+import 'package:get_it/get_it.dart';
+import 'package:pokedex/models/pokemon_list_model.dart';
 import 'package:pokedex/modules/home/repository/home_repository.dart';
 import 'package:pokedex/modules/home/store/home_store.dart';
+import 'package:pokedex/services/pokemon_service.dart';
 
 class HomeController {
   final HomeStore store;
@@ -11,7 +14,7 @@ class HomeController {
   void getData() async {
     final data = await repository.getData();
     if (data != null) {
-      store.setPokemons(data);
+      await store.setPokemons(data);
     }
     store.setLoading(false);
   }
@@ -20,7 +23,7 @@ class HomeController {
     if (store.dataController.next != null) {
       final data = await repository.getMoreData(store.dataController.next!);
       if (data != null) {
-        store.addMorePokemons(data);
+        await store.addMorePokemons(data);
       }
     }
   }
