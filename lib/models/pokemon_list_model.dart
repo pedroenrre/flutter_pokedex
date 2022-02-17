@@ -34,17 +34,13 @@ class DataModel {
 class PokemonListModel {
   String? name;
   String? url;
-  String? pokemonImage;
   PokemonModel? pokemon;
 
-  PokemonListModel({this.name, this.url, this.pokemonImage, this.pokemon});
+  PokemonListModel({this.name, this.url, this.pokemon});
 
   PokemonListModel.fromJson(Map<String, dynamic> json) {
     name = json['name'];
     url = json['url'];
-    final splitedUrl = url!.split('/');
-    pokemonImage =
-        'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${splitedUrl[splitedUrl.length - 2]}.svg';
   }
 
   Map<String, dynamic> toJson() {
