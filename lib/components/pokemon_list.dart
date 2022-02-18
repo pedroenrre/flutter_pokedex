@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import '../home_controller.dart';
+import 'package:pokedex/models/pokemon_list_model.dart';
 import 'pokemon_item.dart';
 import 'pokemon_not_found.dart';
 
 class PokemonList extends StatelessWidget {
-  final HomeController controller;
-  const PokemonList({required this.controller, Key? key}) : super(key: key);
+  final List<PokemonListModel> pokemons;
+  const PokemonList({required this.pokemons, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    if (controller.store.pokemonsFiltered.isEmpty) {
+    if (pokemons.isEmpty) {
       return const PokemonNotFound();
     }
     return GridView.builder(
@@ -21,12 +21,12 @@ class PokemonList extends StatelessWidget {
         crossAxisSpacing: 8,
         mainAxisSpacing: 8,
       ),
-      itemCount: controller.store.pokemonsFiltered.length,
+      itemCount: pokemons.length,
       itemBuilder: (BuildContext ctx, index) {
-        final item = controller.store.pokemonsFiltered[index].pokemon;
+        final item = pokemons[index].pokemon;
         return PokemonItem(
           item: item!,
-          name: controller.store.pokemonsFiltered[index].pokemon!.name,
+          name: item.name,
         );
       },
     );
