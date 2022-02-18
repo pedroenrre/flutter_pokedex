@@ -1,18 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:get_it/get_it.dart';
+import 'package:pokedex/components/pokedex_header.dart';
 import 'package:pokedex/pages/home/components/custom_text_field.dart';
-import 'package:pokedex/pages/home/components/pokedex_header.dart';
-import 'package:pokedex/pages/home/components/pokemon_item.dart';
 import 'package:pokedex/pages/home/components/pokemon_list.dart';
-import 'package:pokedex/pages/home/components/pokemon_not_found.dart';
 import 'package:pokedex/pages/home/home_controller.dart';
-import 'package:pokedex/resources/app_images.dart';
-import 'package:pokedex/resources/app_text_styles.dart';
-import 'package:pokedex/utils/get_type_color.dart';
-import 'package:shimmer/shimmer.dart';
-
 import 'components/custom_icon_button.dart';
 
 class HomeView extends StatefulWidget {

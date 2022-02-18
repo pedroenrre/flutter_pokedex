@@ -72,8 +72,9 @@ abstract class _HomeStoreBase with Store {
 
   @action
   void filterData(String text) {
-    List<PokemonListModel> tmp =
-        [...pokemons].where((element) => element.name!.contains(text)).toList();
+    List<PokemonListModel> tmp = [...pokemons]
+        .where((element) => element.pokemon!.name!.contains(text))
+        .toList();
     pokemonsFiltered.clear();
     pokemonsFiltered.addAll(tmp);
   }

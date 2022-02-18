@@ -26,7 +26,7 @@ class PokemonList extends StatelessWidget {
         final item = controller.store.pokemonsFiltered[index].pokemon;
         return PokemonItem(
           item: item!,
-          name: controller.store.pokemonsFiltered[index].name,
+          name: controller.store.pokemonsFiltered[index].pokemon!.name,
         );
       },
     );

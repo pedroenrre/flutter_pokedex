@@ -32,20 +32,17 @@ class DataModel {
 }
 
 class PokemonListModel {
-  String? name;
   String? url;
   PokemonModel? pokemon;
 
-  PokemonListModel({this.name, this.url, this.pokemon});
+  PokemonListModel({this.url, this.pokemon});
 
   PokemonListModel.fromJson(Map<String, dynamic> json) {
-    name = json['name'];
     url = json['url'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
-    data['name'] = name;
     data['url'] = url;
     return data;
   }
