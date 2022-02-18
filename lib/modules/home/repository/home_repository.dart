@@ -7,7 +7,7 @@ class HomeRepository {
   Future<Map<String, dynamic>?> getData() async {
     try {
       final response = await dio.get('https://pokeapi.co/api/v2/pokemon',
-          queryParameters: {"limit": 15, "offset": 0});
+          queryParameters: {"limit": 12, "offset": 0});
       return response.data;
     } catch (e) {
       return null;
