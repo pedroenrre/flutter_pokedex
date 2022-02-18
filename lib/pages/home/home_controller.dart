@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
-import 'package:pokedex/modules/home/repository/home_repository.dart';
-import 'package:pokedex/modules/home/store/home_store.dart';
+import 'package:pokedex/pages/home/repository/home_repository.dart';
+import 'package:pokedex/pages/home/store/home_store.dart';
 
 class HomeController {
   final HomeStore store;

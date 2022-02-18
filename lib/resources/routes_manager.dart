@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:pokedex/modules/home/home_view.dart';
-import 'package:pokedex/modules/splash/splash_view.dart';
+import 'package:pokedex/pages/home/home_view.dart';
+import 'package:pokedex/pages/splash/splash_view.dart';
 
 class Routes {
   static const String splashRoute = "/";

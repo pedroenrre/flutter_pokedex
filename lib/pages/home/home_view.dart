@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get_it/get_it.dart';
-import 'package:pokedex/modules/home/components/custom_text_field.dart';
-import 'package:pokedex/modules/home/components/pokedex_header.dart';
-import 'package:pokedex/modules/home/components/pokemon_item.dart';
-import 'package:pokedex/modules/home/components/pokemon_not_found.dart';
-import 'package:pokedex/modules/home/home_controller.dart';
+import 'package:pokedex/pages/home/components/custom_text_field.dart';
+import 'package:pokedex/pages/home/components/pokedex_header.dart';
+import 'package:pokedex/pages/home/components/pokemon_item.dart';
+import 'package:pokedex/pages/home/components/pokemon_list.dart';
+import 'package:pokedex/pages/home/components/pokemon_not_found.dart';
+import 'package:pokedex/pages/home/home_controller.dart';
 import 'package:pokedex/resources/app_images.dart';
 import 'package:pokedex/resources/app_text_styles.dart';
 import 'package:pokedex/utils/get_type_color.dart';
@@ -48,7 +49,7 @@ class _HomeViewState extends State<HomeView> {
                             onTap: () {},
                           ),
                         ),
-                        buildList(),
+                        PokemonList(controller: controller),
                         const SizedBox(height: 20),
                         Visibility(
                           visible: controller.store.pokemonsFiltered.isNotEmpty,
@@ -69,30 +70,6 @@ class _HomeViewState extends State<HomeView> {
           },
         ),
       ),
-    );
-  }
-
-  Widget buildList() {
-    if (controller.store.pokemonsFiltered.isEmpty) {
-      return const PokemonNotFound();
-    }
-    return GridView.builder(
-      shrinkWrap: true,
-      physics: const PageScrollPhysics(),
-      gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-        maxCrossAxisExtent: MediaQuery.of(context).size.width / 3,
-        childAspectRatio: 1,
-        crossAxisSpacing: 8,
-        mainAxisSpacing: 8,
-      ),
-      itemCount: controller.store.pokemonsFiltered.length,
-      itemBuilder: (BuildContext ctx, index) {
-        final item = controller.store.pokemonsFiltered[index].pokemon;
-        return PokemonItem(
-          item: item!,
-          name: controller.store.pokemonsFiltered[index].name,
-        );
-      },
     );
   }
 }
