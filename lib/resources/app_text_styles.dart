@@ -26,10 +26,13 @@ TextStyle getPinkStyle({fontSize = 14.0, fontWeight = FontWeight.w400}) {
   );
 }
 
-TextStyle getGreyStyle({double fontSize = 14.0, fontWeight = FontWeight.w400}) {
+TextStyle getGreyStyle(
+    {double fontSize = 14.0,
+    fontWeight = FontWeight.w400,
+    bool isDark = true}) {
   return GoogleFonts.poppins(
     fontSize: fontSize,
     fontWeight: fontWeight,
-    color: AppColors.content,
+    color: isDark ? AppColors.content : AppColors.ligthContent,
   );
 }

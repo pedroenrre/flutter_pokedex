@@ -19,6 +19,7 @@ class PokemonNotFound extends StatelessWidget {
               style: getGreyStyle(
                 fontSize: 200,
                 fontWeight: FontWeight.w700,
+                isDark: false,
               ),
             ),
           ),
@@ -33,6 +34,7 @@ class PokemonNotFound extends StatelessWidget {
               style: getGreyStyle(
                 fontSize: 200,
                 fontWeight: FontWeight.w700,
+                isDark: false,
               ),
             ),
           ),

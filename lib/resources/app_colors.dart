@@ -5,6 +5,7 @@ class AppColors {
   static Color white = HexColor.fromHex("#FFFFFF");
   static Color darkBackground = HexColor.fromHex("#212121");
   static Color content = HexColor.fromHex("#666666");
+  static Color ligthContent = HexColor.fromHex("#BDBDBD");
 
   //Pokemon Type Colors
   static Color normal = HexColor.fromHex("#AAA67F");
