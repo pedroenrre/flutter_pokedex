@@ -35,7 +35,5 @@ class HomeController {
     } else {
       store.resetFilterData();
     }
-    print('pokemon: ${store.pokemons.length}');
-    print('pokemon: ${store.pokemonsFiltered.length}');
   }
 }
